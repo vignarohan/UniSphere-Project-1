@@ -1,0 +1,38 @@
+%% Editable architecture
+flowchart TD
+  S[Student portal] --> B[Application backend]
+  L[Lecturer portal] --> B
+  A[Admin portal] --> B
+  B --> P[Permission checks]
+  P --> D[(Academic database)]
+  P --> F[Private resources]
+  P --> AI[AI adapter]
+  B --> Q[Live quiz sessions]
+  B --> N[Notification outbox]
+  N --> E[Email delivery]
+
+%% Core academic relationships
+ erDiagram
+  USERS ||--o{ ENROLMENTS : has
+  OFFERINGS ||--o{ ENROLMENTS : contains
+  OFFERINGS ||--o{ CLASS_SESSIONS : schedules
+  CLASS_SESSIONS ||--o{ ATTENDANCE : records
+  CLASS_SESSIONS ||--o{ LESSONS : covers
+  LESSONS ||--o{ RESOURCES : provides
+  OFFERINGS ||--o{ ASSIGNMENTS : publishes
+  ASSIGNMENTS ||--o{ SUBMISSIONS : receives
+  USERS ||--o{ SUBMISSIONS : creates
+  TICKETS ||--o{ REPLIES : contains
+  QUIZ_SESSIONS ||--o{ ANSWERS : records
+
+%% User roles
+flowchart TD
+  ENTRY[Portal entry] --> STUDENT[Student login]
+  ENTRY --> LECTURER[Lecturer login]
+  ENTRY --> ADMIN[Admin login]
+  STUDENT --> SD[Student academic workspace]
+  LECTURER --> LD[Teaching workspace]
+  ADMIN --> AD[Administration workspace]
+  SD --> SHARED[Authorised AI and tickets]
+  LD --> SHARED
+  AD --> SHARED
