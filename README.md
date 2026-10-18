@@ -1,33 +1,78 @@
 # UniSphere
-Integrated university academic portal with an AI academic assistant.
+### An Integrated University Academic Portal with an AI Assistant
 
-## Status
-Documentation and planning package prepared on 18 October 2026. Application implementation has not been included in this package. No test outcomes, university approval or production deployment are claimed.
+Final Year Project by **Shri Vignarohan A/L S. Ramasamy**  
+Bachelor of IT Honours Cyber Security
 
-## Owner
-Shri Vignarohan A/L S. Ramasamy. Bachelor of IT Honours Cyber Security. Student ID, institution metadata and supervisor must be completed before academic submission.
+UniSphere brings academic management, learning resources and student support into one organised web portal.
 
-## Roles and features
-- Student: subjects, resources, recordings, assignments, attendance, schedules, results and CGPA, progress, simulated finance, Quiz Me, live quiz participation and tickets.
-- Lecturer: teaching schedule, materials, assignments, submissions, marking, attendance, student attention filters, class quizzes and tickets.
-- Admin: account management, academic structures, enrolment, schedules, published results, fees, support management and audits.
-- Shared: floating contextual assistant, scoped notifications and email-backed ticket conversations.
+## Project status
+**Planning and documentation completed. Application implementation has not started in this repository.**
+Student ID, university details, supervisor and the actual course schedule remain to be confirmed.
 
-## Documents
-- PRD.md is the build specification with requirement IDs, acceptance criteria, architecture, data model, proposed API and evaluation plan.
-- docs/UniSphere_Project_Proposal.pdf and .docx provide the academic proposal.
-- docs/UniSphere_PRD.pdf and .docx provide readable and editable PRD copies.
-- docs/architecture.png and timeline.png show the proposed design and schedule.
-- docs/diagrams.mmd contains editable Mermaid diagrams.
-- docs/TEST_PLAN.md provides the test execution template.
-- docs/IMPLEMENTATION_PLAN.md explains the proposed module and delivery structure.
-- docs/SIMPLE_OVERVIEW.md provides the plain-language pitch.
+## The problem
+Students need a clear way to find deadlines, submit work, track attendance and results, recover missed lessons and resolve administrative enquiries. Lecturers need a class overview that highlights outstanding work and students who may need support.
 
-## Delivery
-Project 1 is a proposed seven-week foundation and academic/AI vertical slice. Project 2 completes the remaining specified demonstration features. Confirm actual rubric and timeline with the supervisor.
+## Three connected portals
+| Student | Lecturer | Admin |
+| --- | --- | --- |
+| Subjects, notes and recordings | Upload and publish materials | Users, roles and enrolments |
+| Assignments and feedback | Assignments, marking and feedback | Academic structures and policies |
+| Attendance, timetable and exams | Attendance and class schedule | Timetables and examination records |
+| Results, GPA and CGPA | Student progress and attention filters | Published results and sample fees |
+| Quiz Me and live quiz participation | Quiz Your Students and session results | Ticket oversight and system activity |
+| Simulated finance and support tickets | Support tickets and announcements | Overall platform management |
 
-## Setup
-There is no runnable application yet, so no install or launch command is claimed. Proposed stack: Django, PostgreSQL, private storage, an AI-provider adapter, email outbox and live quiz channel. Supported dependency versions and requirements.txt will be generated after implementation choices are verified. Never commit provider keys, real student records or mailbox passwords.
+## Built in AI assistant
+A floating robot button opens a contextual chat panel. Planned examples:
+- “What assignments do I still need to submit?”
+- “I missed Monday's class. Show me the notes and recording.”
+- “Explain this topic and quiz me.”
+- Lecturer: “Who has outstanding submissions in my class?”
+
+The assistant retrieves authorised records and explains supplied learning materials with references. Missing information is disclosed. Catch-up completion does not change historical attendance.
+
+## Quizzes and support
+**Quiz Me** provides individual practice. **Quiz Your Students** lets lecturers launch interactive timed quizzes and notify their class to join through an authenticated link or code.
+
+All roles can submit category-based tickets to eligible recipients. Receivers get portal notifications and email links. Replies, status changes and resolution history stay inside the portal.
+
+## Documentation
+| Document | Open |
+| --- | --- |
+| Full product requirements and acceptance criteria | [PRD](PRD.md) |
+| Project proposal | [PDF](docs/UniSphere_Project_Proposal.pdf) · [Word](docs/UniSphere_Project_Proposal.docx) · [Markdown](docs/UniSphere_Project_Proposal.md) |
+| Product requirements document | [PDF](docs/UniSphere_PRD.pdf) · [Word](docs/UniSphere_PRD.docx) |
+| Simple project explanation | [Overview](docs/SIMPLE_OVERVIEW.md) |
+| Module and delivery plan | [Implementation plan](docs/IMPLEMENTATION_PLAN.md) |
+| Test execution template and demo script | [Test plan](docs/TEST_PLAN.md) |
+| Editable architecture and relationship diagrams | [Mermaid source](docs/diagrams.mmd) |
+
+## System architecture
+![Proposed UniSphere architecture](docs/architecture.png)
+
+Proposed baseline: Django, PostgreSQL, private file storage, an AI adapter, a live quiz channel and an email outbox. Exact supported dependencies will be verified during implementation.
+
+## Development timeline
+![Proposed Project 1 timeline](docs/timeline.png)
+
+Project 1 targets a working academic and AI vertical slice. Project 2 completes the remaining specified features. This is a proposed schedule, subject to the actual course rubric.
+
+## Progress
+- [x] Project concept and scope documented
+- [x] Student, Lecturer and Admin requirements documented
+- [x] PRD with 34 functional requirements
+- [x] Architecture, timeline and test plan
+- [ ] Supervisor review and personal metadata
+- [ ] Authentication and sample academic records
+- [ ] Assignment and attendance workflows
+- [ ] AI record retrieval and catch-up tutoring
+- [ ] Practice and live quizzes
+- [ ] Tickets and email notifications
+- [ ] Integrated testing and final demonstration
+
+## Demonstration boundaries
+Fictional users and sample academic data; simulated payments; authorised teaching materials. No production university integration or real fee collection. Practice results remain separate from official grades.
 
 ## References
-The friend's IoT Guardian report and repository were structural references, not reusable UniSphere source code. University of Edinburgh LOUISA research and Moodle documentation are cited in the documents. Existing LMS features are acknowledged; the project contribution is evaluated integration.
+The supplied IoT Guardian project was reviewed for documentation structure. UniSphere's documents are independently written for this project. Research and existing-system references are listed in the proposal and PRD.
