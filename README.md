@@ -7,8 +7,14 @@ Bachelor of IT Honours Cyber Security
 UniSphere brings academic management, learning resources and student support into one organised web portal.
 
 ## Project status
-**Planning and documentation completed. Application implementation has not started in this repository.**
+**Django and PWA foundation implemented on the `feature/django-pwa-foundation` branch. The full application remains in development.**
 Student ID, university details, supervisor and the actual course schedule remain to be confirmed.
+
+## Run the first working version
+
+See the [Windows and macOS/Linux setup guide](docs/DEVELOPMENT.md). It includes the demo account setup, PostgreSQL option, assignment demonstration and test commands.
+
+This milestone implements role sign-in, three dashboards, enrolled subjects, protected notes, assignment publication and versioned submission, released feedback, attendance display, a class timetable, historical CGPA, sample fee balances and PWA installation support. The floating helper currently performs authorised record lookups; model-powered AI, quizzes, tickets and email are still planned.
 
 ## The problem
 Students need a clear way to find deadlines, submit work, track attendance and results, recover missed lessons and resolve administrative enquiries. Lecturers need a class overview that highlights outstanding work and students who may need support.
@@ -64,8 +70,11 @@ Project 1 targets a working academic and AI vertical slice. Project 2 completes 
 - [x] PRD with 34 functional requirements
 - [x] Architecture, timeline and test plan
 - [ ] Supervisor review and personal metadata
-- [ ] Authentication and sample academic records
-- [ ] Assignment and attendance workflows
+- [x] Authentication and sample academic records
+- [x] Assignment publication, submission receipts and released feedback
+- [x] Attendance display and class timetable
+- [x] PWA manifest, public offline screen and private-page cache boundaries
+- [ ] Attendance editing, corrections and complete academic policies
 - [ ] AI record retrieval and catch-up tutoring
 - [ ] Practice and live quizzes
 - [ ] Tickets and email notifications

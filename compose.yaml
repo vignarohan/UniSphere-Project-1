@@ -1,0 +1,18 @@
+services:
+  db:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_DB: unisphere
+      POSTGRES_USER: unisphere
+      POSTGRES_PASSWORD: ${UNISPHERE_DB_PASSWORD:?Set UNISPHERE_DB_PASSWORD before starting PostgreSQL}
+    ports:
+      - "127.0.0.1:5432:5432"
+    volumes:
+      - unisphere-postgres:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U unisphere -d unisphere"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+volumes:
+  unisphere-postgres:

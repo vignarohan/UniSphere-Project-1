@@ -1,0 +1,52 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#142b40">
+  <meta name="description" content="UniSphere university academic portal">
+  <title>{{ title }} · UniSphere</title>
+  <link rel="manifest" href="{% url 'manifest' %}">
+  <link rel="icon" href="{% static 'icons/icon-192.png' %}">
+  <link rel="apple-touch-icon" href="{% static 'icons/icon-192.png' %}">
+  <link rel="stylesheet" href="{% static 'css/app.css' %}">
+  <script src="{% static 'js/app.js' %}" defer></script>
+</head>
+<body {% if user.is_authenticated %}class="portal"{% endif %}>
+<a class="skip-link" href="#main">Skip to content</a>
+{% if user.is_authenticated %}
+  <div class="mobile-bar"><button class="icon-button" id="nav-toggle" aria-controls="sidebar" aria-expanded="false" aria-label="Open navigation">{% include 'core/partials/icon.html' with name='menu' %}</button><a href="{% url 'dashboard' %}" class="brand">UniSphere</a></div>
+  <button id="nav-backdrop" class="nav-backdrop" aria-label="Close navigation" hidden></button>
+  <aside class="sidebar" id="sidebar">
+    <a class="brand" href="{% url 'dashboard' %}">UniSphere</a>
+    <div class="portal-name">{{ portal_role }} portal</div>
+    <nav aria-label="Main navigation">
+      <a class="nav-item {% if active == 'dashboard' %}selected{% endif %}" href="{% url 'dashboard' %}" {% if active == 'dashboard' %}aria-current="page"{% endif %}>{% include 'core/partials/icon.html' with name='home' %}<span>Dashboard</span></a>
+      <a class="nav-item {% if active == 'subjects' %}selected{% endif %}" href="{% url 'subjects' %}">{% include 'core/partials/icon.html' with name='book' %}<span>{% if user.role == 'student' %}My subjects{% else %}My classes{% endif %}</span></a>
+      <a class="nav-item {% if active == 'assignments' %}selected{% endif %}" href="{% url 'assignments' %}">{% include 'core/partials/icon.html' with name='file' %}<span>Assignments</span></a>
+      {% if user.role == 'student' %}<a class="nav-item {% if active == 'attendance' %}selected{% endif %}" href="{% url 'attendance' %}">{% include 'core/partials/icon.html' with name='check' %}<span>Attendance</span></a>{% endif %}
+      <a class="nav-item {% if active == 'timetable' %}selected{% endif %}" href="{% url 'timetable' %}">{% include 'core/partials/icon.html' with name='calendar' %}<span>Timetable</span></a>
+      {% if user.role == 'admin' and user.is_staff %}<a class="nav-item" href="{% url 'admin:index' %}">{% include 'core/partials/icon.html' with name='users' %}<span>Manage records</span></a>{% endif %}
+    </nav>
+    <div class="sidebar-account"><div class="profile"><span class="avatar">{{ user.first_name|first }}{{ user.last_name|first }}</span><span>{{ user.get_full_name|default:user.username }}</span></div><form action="{% url 'logout' %}" method="post">{% csrf_token %}<button class="signout" type="submit">{% include 'core/partials/icon.html' with name='logout' %}Sign out</button></form></div>
+  </aside>
+{% endif %}
+<main id="main" class="{% if user.is_authenticated %}workspace{% else %}public-workspace{% endif %}" tabindex="-1">
+  {% if messages %}<div class="messages" aria-live="polite">{% for message in messages %}<p class="message {{ message.tags }}">{{ message }}</p>{% endfor %}</div>{% endif %}
+  {% block content %}{% endblock %}
+</main>
+{% if user.is_authenticated %}
+  <button class="helper-launch" id="helper-open" aria-label="Open portal helper" aria-haspopup="dialog">{% include 'core/partials/icon.html' with name='robot' %}</button>
+  <dialog class="helper-panel" id="helper-dialog" aria-labelledby="helper-title">
+    <div class="helper-heading"><h2 id="helper-title">Portal helper</h2><button class="icon-button" id="helper-close" aria-label="Close portal helper">{% include 'core/partials/icon.html' with name='close' %}</button></div>
+    <p class="muted small">Look up your portal records. AI tutoring is planned for a later milestone.</p>
+    <div class="helper-actions">
+      {% if user.role == 'student' %}<button class="button secondary" data-lookup="pending">My pending assignments</button><button class="button secondary" data-lookup="attendance">My attendance</button>{% elif user.role == 'lecturer' %}<button class="button secondary" data-lookup="marking">My marking queue</button>{% else %}<button class="button secondary" data-lookup="accounts">Account overview</button>{% endif %}
+    </div>
+    <div id="helper-results" aria-live="polite" data-endpoint="{% url 'helper-records' %}"></div>
+  </dialog>
+{% endif %}
+<dialog class="install-panel" id="install-dialog" aria-labelledby="install-title"><h2 id="install-title">Install UniSphere</h2><p>Use your browser’s Install app option. On iPhone or iPad, open the Share menu and choose Add to Home Screen.</p><p class="muted small">Installation depends on your browser. Academic records and submissions require an internet connection.</p><button class="button" id="install-close">Got it</button></dialog>
+</body>
+</html>

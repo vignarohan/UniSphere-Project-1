@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+<header class="entry-header"><a class="brand dark" href="{% url 'entry' %}">UniSphere</a><button class="button secondary install-trigger">{% include 'core/partials/icon.html' with name='download' %}Install app</button></header>
+<section class="entry-content"><h1>Welcome to UniSphere</h1><p class="entry-intro">Choose your portal to sign in.</p>
+  <div class="role-options">
+    <a class="role-option" href="{% url 'login' 'student' %}"><span class="role-icon">{% include 'core/partials/icon.html' with name='book' %}</span><h2>Student</h2><p>Your subjects, assignments and academic progress, together.</p><span class="role-action">Continue as Student <span aria-hidden="true">→</span></span></a>
+    <a class="role-option" href="{% url 'login' 'lecturer' %}"><span class="role-icon">{% include 'core/partials/icon.html' with name='users' %}</span><h2>Lecturer</h2><p>Your classes, learning materials and student submissions.</p><span class="role-action">Continue as Lecturer <span aria-hidden="true">→</span></span></a>
+  </div>
+  <a class="admin-entry" href="{% url 'login' 'admin' %}">Admin sign in <span aria-hidden="true">→</span></a>
+  <p class="entry-note">University demonstration · Fictional academic data</p>
+</section>
+{% endblock %}
