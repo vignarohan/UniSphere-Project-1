@@ -1,0 +1,2 @@
+{% extends 'base.html' %}
+{% block content %}<header class="page-header"><div><h1>Assignments</h1><p>{% if user.role == 'student' %}Your published assignments, submissions and feedback.{% else %}Assignments for your assigned classes.{% endif %}</p></div>{% if user.role == 'lecturer' %}<a class="button" href="{% url 'assignment-new' %}">Create assignment</a>{% endif %}</header><section class="panel">{% include 'core/partials/assignment_table.html' %}</section>{% endblock %}

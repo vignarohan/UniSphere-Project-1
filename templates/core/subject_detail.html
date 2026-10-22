@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+{% block content %}
+<a class="text-link" href="{% url 'subjects' %}">← All subjects</a><header class="page-header"><div><p class="subject-code">{{ offering.code }} · {{ offering.semester }}</p><h1>{{ offering.title }}</h1><p>{{ offering.description }}</p></div>{% if user.role == 'lecturer' %}<a class="button" href="{% url 'resource-new' offering.pk %}">Publish material</a>{% endif %}</header>
+<p class="muted">Lecturer{% if offering.lecturers.count > 1 %}s{% endif %}: {% for lecturer in offering.lecturers.all %}{{ lecturer }}{% if not forloop.last %}, {% endif %}{% endfor %} · {{ offering.credits }} credits</p>
+<section class="panel"><h2>Learning materials</h2>{% for resource in resources %}<div class="record-row"><div><strong>{{ resource.title }}</strong><p class="small muted">{{ resource.original_name }} · Published {{ resource.published_at|date:'d M Y' }}</p></div><a class="button secondary small-button" href="{% url 'resource-download' resource.pk %}">{% include 'core/partials/icon.html' with name='download' %}Download</a></div>{% empty %}<p class="empty-text">No materials have been published for this subject.</p>{% endfor %}</section>
+<section class="panel subject-panel"><h2>Assignments</h2>{% include 'core/partials/assignment_table.html' %}</section>
+{% endblock %}

@@ -1,0 +1,5 @@
+{% extends 'base.html' %}
+{% block content %}
+<header class="entry-header"><a class="brand dark" href="{% url 'entry' %}">UniSphere</a></header>
+<section class="login-layout"><a class="text-link" href="{% url 'entry' %}">← Choose another portal</a><h1>{{ role_name }} sign in</h1><p class="muted">Use your {{ role_name|lower }} account to continue.</p><form method="post" class="portal-form">{% csrf_token %}{{ form.as_div }}<button class="button full-width" type="submit">Sign in</button></form><p class="small muted">Demo accounts are created using the project’s setup command. This page does not create or switch account roles.</p></section>
+{% endblock %}

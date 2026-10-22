@@ -1,0 +1,6 @@
+{
+  "name": "unisphere-styles",
+  "private": true,
+  "scripts": {"build:css": "tailwindcss -i frontend/source.css -o static/css/app.css --minify", "watch:css": "tailwindcss -i frontend/source.css -o static/css/app.css --watch"},
+  "devDependencies": {"@tailwindcss/cli": "4.3.2", "tailwindcss": "4.3.2"}
+}

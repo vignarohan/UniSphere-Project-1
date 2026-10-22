@@ -1,0 +1,2 @@
+{% extends 'base.html' %}
+{% block content %}<a class="text-link" href="{{ back_url }}">← Back</a><header class="page-header"><div><h1>{{ title }}</h1>{% if description %}<p>{{ description }}</p>{% endif %}</div></header><section class="panel form-panel"><form method="post" enctype="multipart/form-data" class="portal-form">{% csrf_token %}{{ form.as_div }}<button class="button">{{ button }}</button></form></section>{% endblock %}
