@@ -1,12 +1,20 @@
-# Foundation interface design
+# Red-and-white interface design
 
-The student dashboard concept is the visual reference for this milestone. Student, Lecturer and Admin share typography, spacing, controls and accessible navigation.
+UniSphere's shared portal shell now uses the requested red-and-white palette with a white sidebar, rose selected navigation, rounded summary cards and a softly tinted next-class panel. Student, Lecturer and Admin dashboards and entry/sign-in pages share these tokens.
 
-- Canvas `#f5f8fc`, white content panels, navy navigation `#142b40`, teal actions `#087d83`.
-- Desktop sidebar 255 px; main gutters 34 px; body 16 px; dashboard heading 44 px; metric values 40 px.
-- Summary metrics use open columns. Assignments and subjects use tables; the next class uses a compact adjacent panel.
-- Tables use light separators, restrained status colours and explicit text labels. Buttons have focus indicators and clear names.
-- Below 760 px, navigation becomes a drawer, summary metrics use two columns and wide tables scroll within their panels.
-- The helper is a keyboard-accessible dialog opened by the bottom-right robot button. It is labelled as a record helper until model-backed AI is implemented.
+- Accent `#c92b43`, hover `#a51c33`, white surfaces, canvas `#fcf7f8`, ink `#20212c`, muted labels `#727581`, borders `#eeeaed`.
+- Desktop sidebar 255px (225px on medium screens), primary heading 40px, summary values 32px, card radius 14–16px. Below 760px navigation becomes a drawer and summary cards use two columns.
+- Tables retain actual records and scroll within their containers. Added Results & CGPA and Fees links use existing authorized student pages.
+- PWA theme metadata and offline page use the red accent. The existing app icon assets remain unchanged.
+- The floating helper remains explicitly labelled as a record lookup helper until model-backed tutoring is implemented.
 
-The concept's dates and displayed lecturer list are illustrative. Actual dates depend on seeding, co-teaching assignments display all assigned lecturers, and the implemented next-class panel includes its date to avoid ambiguity. These are deliberate data and usability adaptations.
+## Concept adaptations
+
+The generated red-and-white concept supplies the palette, white sidebar, summary cards, table panels and next-class treatment. Actual records, dates, row count, lecturer names and course codes are retained. No class end time is invented. Existing assignment and subject table columns and actions are preserved. The sidebar follows the implemented routes and existing icon family. The concept's generated illustrative academic content is not hardcoded.
+
+## Verification
+
+- All 33 existing Django tests pass on SQLite after the redesign.
+- Compiled Tailwind stylesheet rebuilt successfully; git whitespace check passes.
+- Browser visual verification is incomplete: the cloud browser cannot access the local application, and local Chromium cannot launch because Unix sockets are disallowed in the execution sandbox. Escalated execution was rejected by the environment approval policy.
+- Do not claim pixel-perfect fidelity, completed mobile/browser interaction QA, or measured usability improvement for this revision. Desktop/mobile visual review remains required.

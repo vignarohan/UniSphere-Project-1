@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#142b40">
+  <meta name="theme-color" content="#c92b43">
   <meta name="description" content="UniSphere university academic portal">
   <title>{{ title }} · UniSphere</title>
   <link rel="manifest" href="{% url 'manifest' %}">
@@ -26,6 +26,7 @@
       <a class="nav-item {% if active == 'subjects' %}selected{% endif %}" href="{% url 'subjects' %}">{% include 'core/partials/icon.html' with name='book' %}<span>{% if user.role == 'student' %}My subjects{% else %}My classes{% endif %}</span></a>
       <a class="nav-item {% if active == 'assignments' %}selected{% endif %}" href="{% url 'assignments' %}">{% include 'core/partials/icon.html' with name='file' %}<span>Assignments</span></a>
       {% if user.role == 'student' %}<a class="nav-item {% if active == 'attendance' %}selected{% endif %}" href="{% url 'attendance' %}">{% include 'core/partials/icon.html' with name='check' %}<span>Attendance</span></a>{% endif %}
+      {% if user.role == 'student' %}<a class="nav-item {% if active == 'results' %}selected{% endif %}" href="{% url 'results' %}">{% include 'core/partials/icon.html' with name='chart' %}<span>Results &amp; CGPA</span></a><a class="nav-item {% if active == 'fees' %}selected{% endif %}" href="{% url 'fees' %}">{% include 'core/partials/icon.html' with name='wallet' %}<span>Fees</span></a>{% endif %}
       <a class="nav-item {% if active == 'timetable' %}selected{% endif %}" href="{% url 'timetable' %}">{% include 'core/partials/icon.html' with name='calendar' %}<span>Timetable</span></a>
       {% if user.role == 'admin' and user.is_staff %}<a class="nav-item" href="{% url 'admin:index' %}">{% include 'core/partials/icon.html' with name='users' %}<span>Manage records</span></a>{% endif %}
     </nav>

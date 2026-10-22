@@ -316,7 +316,7 @@ def helper_records(request):
 
 @require_GET
 def manifest(request):
-    return JsonResponse({'id': '/', 'name': 'UniSphere', 'short_name': 'UniSphere', 'description': 'Your university academic portal', 'start_url': '/', 'scope': '/', 'display': 'standalone', 'background_color': '#f5f8fc', 'theme_color': '#142b40', 'icons': [
+    return JsonResponse({'id': '/', 'name': 'UniSphere', 'short_name': 'UniSphere', 'description': 'Your university academic portal', 'start_url': '/', 'scope': '/', 'display': 'standalone', 'background_color': '#fcf7f8', 'theme_color': '#c92b43', 'icons': [
         {'src': '/static/icons/icon-192.png', 'sizes': '192x192', 'type': 'image/png'},
         {'src': '/static/icons/icon-512.png', 'sizes': '512x512', 'type': 'image/png', 'purpose': 'any'},
         {'src': '/static/icons/icon-maskable.png', 'sizes': '512x512', 'type': 'image/png', 'purpose': 'maskable'},
